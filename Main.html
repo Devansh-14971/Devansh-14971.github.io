@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<HTML>
+    <Head>
+        <title>
+
+        </title>
+    </Head>
+    <Body>
+        <input id = 'user_in'>
+        <button onclick = 'update_user()'>Submit</button>
+        <script type = 'text/javascript'>
+            function update_user(){
+                user_id = document.getElementById('user_in').value;
+            }
+            httpResuest = new XMLHttpRequest();
+            httpRequest.open("GET","http://reques.in/api/users/"+user_id);
+            httpRequest.send();
+            httpRequest.onreadystatechange= function(){
+                if(this.readystate==4 && this.status==200){
+                    user_data = JSON.parse(this.responseText);
+                    document.getElementById('output') = user_data.data.first_name;
+                }
+            }
+        </script>
+    </Body>
+</HTML>
